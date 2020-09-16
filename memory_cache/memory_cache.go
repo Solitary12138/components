@@ -130,7 +130,6 @@ func (this *CacheGroup) addDefultCache(key string) *Cache {
 	}
 	c := newCache(defultExpiration, defultInterval)
 	this.caches[key] = c
-	//fmt.Println(key)
 	this.mu.Unlock()
 	return c
 }
@@ -165,7 +164,6 @@ func (this *CacheGroup) SetValue(key string, value interface{}, expiration time.
 	c, ok := this.getCache(key)
 	if !ok {
 		c = this.addDefultCache(key)
-		//fmt.Println("errorss")
 	}
 	c.setValue(key, value, expiration)
 }
